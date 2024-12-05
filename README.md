@@ -23,3 +23,15 @@ In this milestone we have added the correct folder structure of the project, add
 - Node.js Setup: added express, mongoose, nodemon and cors dependencies to make the backend
 - Tailwind CSS: Added Tailwind CSS to enable modern, responsive and utility-based styling
 - Login Page: Created the first user interface of the application with appropriate functioning and styling
+
+## Milestone - 3
+
+In this milestone we have set up dedicated folders for organizing backend code effectively and connected to MongoDB
+
+### Key Features:
+
+- Created correct folder structure for handling backend code
+- Used Node.js and Express to create backend server
+- Integrated MongoDB for data storage.
+- Connected the server and MongoDB.
+- Provided Clear Error messages for Debugging.
