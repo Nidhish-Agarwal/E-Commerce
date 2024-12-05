@@ -35,3 +35,13 @@ In this milestone we have set up dedicated folders for organizing backend code e
 - Integrated MongoDB for data storage.
 - Connected the server and MongoDB.
 - Provided Clear Error messages for Debugging.
+
+## Milestone - 4
+
+In this Milestone we have created a User Model for our database, set up controller to handle user-realted data, and enabled filed uploads using Multer
+
+### Key Features:
+
+- Created a User Model which is like a blueprint of how our user's data will be stored in the database;
+- Created a User Controller to manage what happens with user data
+- Enabled and configured Multer to allow to accept and store files uploaded by users
