@@ -45,3 +45,14 @@ In this Milestone we have created a User Model for our database, set up controll
 - Created a User Model which is like a blueprint of how our user's data will be stored in the database;
 - Created a User Controller to manage what happens with user data
 - Enabled and configured Multer to allow to accept and store files uploaded by users
+
+## Milestone - 5
+
+In this milestone we have properly set up the login and signup pages with proper validation and have also added routing in react
+
+### Kye Features:
+
+- Created a signup page with Name, Email, Password, and file upload.
+- Added proper form validation is RegEx
+- Integrated that form validatin in login and signup forms.
+- Used react-router-dom for routing through multiple pages
