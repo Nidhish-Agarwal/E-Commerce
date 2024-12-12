@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo.png'
+import { Link } from 'react-router-dom';
+
 
 function LoginPage() {
     const [credentials, setCredentials] = useState({
@@ -91,7 +93,7 @@ function LoginPage() {
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Not a member?{' '}
             <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-              Sign Up
+              <Link to={'/signup'}>Sign Up</Link>
             </a>
           </p>
         </div>
