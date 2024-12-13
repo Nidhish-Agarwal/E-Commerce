@@ -7,12 +7,14 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 const express = require("express");
 
 const app = express();
-const userRouter = require("./routes/user.route");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+const userRouter = require("./routes/user.route.js");
 
 app.get("/", (req, res) => {
   res.send("Welcome to backend");
 });
 
-app.get("/user", userRouter);
+app.use("/user", userRouter);
 
 module.exports = app;

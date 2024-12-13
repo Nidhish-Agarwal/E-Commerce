@@ -56,3 +56,13 @@ In this milestone we have properly set up the login and signup pages with proper
 - Added proper form validation is RegEx
 - Integrated that form validatin in login and signup forms.
 - Used react-router-dom for routing through multiple pages
+
+## Milestonee - 6
+
+In this Milestone we have set up sendmail.js file to send verifcation mails to user with jasonwebtokens
+
+### Key Features:
+
+- Used nodemailer to send mails to users
+- used JWT to encrypt the data
+- learned how to use postman to get data and store it in database

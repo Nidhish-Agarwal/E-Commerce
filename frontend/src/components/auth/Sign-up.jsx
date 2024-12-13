@@ -14,29 +14,34 @@ function SignupPage() {
     })
 
     const handleChange = (e) => {
-        const [name, value] = e.target;
+        const {name, value, files} = e.target;
         setData({
             ...data,
-            [name]: value
+            [name]: name === 'file' ? files[0] : value,
         });
         console.log(data);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const nameV = validationObject.validateName(data.name);
         const emailV = validationObject.validateEmail(data.email);
         const passV = validationObject.validatePass(data.password);
 
         if(typeof nameV == 'string' && nameV.length > 1){
+            console.log(error)
             return  setError(nameV);
         }
         if(typeof emailV == 'string' && emailV.length > 2){
+          console.log(error)
             return  setError(emailV);
         }
         if(typeof passV == 'string' && passV.length > 2){
+          console.log(error)
             return  setError(passV);
         }
 
+        setError("");
         console.log(error);
 
         // axios request
@@ -53,7 +58,7 @@ function SignupPage() {
           <input
             type="text"
             id="username"
-            name="username"
+            name="name"
             value={data.name}
             onChange={handleChange}
             required
@@ -99,7 +104,7 @@ function SignupPage() {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
           />
         </div>
-
+        <p className="text-red-600 text-center">{error}</p>
         <button
           type="submit"
           className="w-full bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300"
