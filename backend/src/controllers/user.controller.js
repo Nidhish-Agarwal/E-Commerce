@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/ErrorHandler.js");
 const UserModel = require("../models/user.model.js");
 const transporter = require("../utils/sendmails.js");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
@@ -89,4 +90,71 @@ const verifyUser = () => {
   return verify;
 };
 
-module.exports = { CreateUser, verifyUserController };
+const signup = async (req, res) => {
+  const { Name, email, password } = req.body;
+  console.log(req.body);
+  try {
+    const checkUserPresentInDB = await UserModel.findOne({ email: email });
+    if (checkUserPresentInDB) {
+      return res.status(403).send({ message: "User already present" });
+    }
+    bcrypt.hash(password, 10, async function (err, hash) {
+      if (err) {
+        return res
+          .status(403)
+          .send({ message: "Please enter the password..." });
+      }
+
+      await UserModel.create({
+        Name: Name,
+        email: email,
+        password: hash,
+      });
+    });
+
+    return res.status(201).send({ message: "User created sucessfully" });
+  } catch (er) {
+    return res.status(500).send({ message: er.message });
+  }
+};
+
+const login = async (req, res) => {
+  try {
+    const { Name, email, password } = req.body;
+    const checkUserPresentInDB = await UserModel.findOne({ email: email });
+    if (checkUserPresentInDB) {
+      bcrypt.compare(
+        password,
+        checkUserPresentInDB.password,
+        function (err, result) {
+          if (err) {
+            return res
+              .status(403)
+              .send({ message: er.message, success: false });
+          }
+
+          let data = {
+            id: checkUserPresentInDB._id,
+            email,
+            password: checkUserPresentInDB.password,
+          };
+
+          const token = generateToken(data);
+
+          return res
+            .status(200)
+            .cookie("token", token)
+            .send({ message: "User logged in sucessfully..", success: true });
+        }
+      );
+    }
+
+    return res
+      .status(403)
+      .send({ message: "User not found...", success: false });
+  } catch (er) {
+    return res.status(403).send({ message: er.message, success: false });
+  }
+};
+
+module.exports = { CreateUser, verifyUserController, signup, login };

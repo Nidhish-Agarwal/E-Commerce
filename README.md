@@ -66,3 +66,21 @@ In this Milestone we have set up sendmail.js file to send verifcation mails to u
 - Used nodemailer to send mails to users
 - used JWT to encrypt the data
 - learned how to use postman to get data and store it in database
+
+## Milestone - 7
+
+In this Milestone we have set up functions to authenticate user during login and signup and encrypt their password
+
+### Key Features:
+
+- Created two routes signup and login
+- For Signup:
+
+  - Take the data which is sent by the user.
+  - If the user is already present in DB then throw error
+  - If not then create a new user and encrypt their password and store it.
+
+- For login:
+  - Take the data which is sent by the user.
+  - If the user is present in the DB then check if the credentials are correct.
+  - If the user is not present then throw an error.
