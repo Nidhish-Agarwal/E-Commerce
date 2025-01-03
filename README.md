@@ -104,3 +104,13 @@ In this milestone we have created the products entry page
 - Added basic funtionality to add images and handle change
 - Added the functionality to check the contents while submitting the data
 - when the data is correct it gets saved in the database
+
+## Milestone - 10
+
+In this milestone we have written the product schema
+
+### Key Features:
+
+- We have made the prodeuct schmea to define the structure using Mongoose
+- Built a POST endpoint to receive product data and validate and save the details to MongoDB
+- We have used cloudinary to efficiently store and manage photos and video uploads
