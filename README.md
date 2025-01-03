@@ -84,3 +84,23 @@ In this Milestone we have set up functions to authenticate user during login and
   - Take the data which is sent by the user.
   - If the user is present in the DB then check if the credentials are correct.
   - If the user is not present then throw an error.
+
+## Milestone - 8
+
+In this milestone we have created the card component
+
+### Key Features:
+
+- Created the dynamic card component
+- loaded information of each card using props passed to it
+
+## Milestone - 9
+
+In this milestone we have created the products entry page
+
+### Key Features:
+
+- Created a react file for product entry page
+- Added basic funtionality to add images and handle change
+- Added the functionality to check the contents while submitting the data
+- when the data is correct it gets saved in the database
