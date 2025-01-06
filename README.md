@@ -114,3 +114,13 @@ In this milestone we have written the product schema
 - We have made the prodeuct schmea to define the structure using Mongoose
 - Built a POST endpoint to receive product data and validate and save the details to MongoDB
 - We have used cloudinary to efficiently store and manage photos and video uploads
+
+## Milestone - 11
+
+In this milestone we have added the functionality to fetch all the product details from the database
+
+### Key Features:
+
+- Have added function to fetch the product deatils in product.controller.js
+- Added a new route to product.route.js
+- Tested this function using Postman get request
