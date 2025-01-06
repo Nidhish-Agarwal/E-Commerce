@@ -1,23 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../components/ProductCard/Card'
-import watchImage from '../assets/shopping.png'
+import axios from 'axios';
+import { Car } from 'lucide-react';
 function HomePage() {
-    const demoProduct = {
-        name: "Smart Watch Series 6",
-        description: "Track your fitness, health, and notifications with the latest Smart Watch Series 6. Lightweight and water-resistant.",
-        price: 249.99,
-        image:watchImage ,
-    };
+    const [products, setProducts] = useState([])
+
+    const getProducts = async () => {
+      const response = await axios.get('http://localhost:8080/product/get-products');
+      setProducts(response.data.data);  
+    }
+
+    useEffect(()=>{
+      const callProducts = async () => {
+        await getProducts();
+      }
+      callProducts();
+    },[]);
+    console.log(products);
+    
       
   return(
     <>
     <div className='grid gap-4 grid-cols-3'>
-        <Card product = { demoProduct}/>
-        <Card product = { demoProduct} />
-        <Card product = { demoProduct} />
-        <Card product = { demoProduct} />
-        <Card product = { demoProduct} />
-        <Card product = { demoProduct} />
+        {products.map( (element, index)=> ( 
+          <Card product = {element} key={index}/>
+        ))}
+        
     </div>
     </>
   )
