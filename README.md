@@ -124,3 +124,13 @@ In this milestone we have added the functionality to fetch all the product detai
 - Have added function to fetch the product deatils in product.controller.js
 - Added a new route to product.route.js
 - Tested this function using Postman get request
+
+## Milestone - 12
+
+In this milestone we are displaying all the products in front end in an organized manner
+
+### Key Features:
+
+- Have added getProducts funtion in HomePage.jsx to fetch all the products using our API endpoint
+- After sucessfully fetching the products we have stroed it in a variable
+- after stroing the data we have sent each product to the card component to display it in the frontend
