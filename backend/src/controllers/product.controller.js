@@ -68,4 +68,82 @@ const getProductDataController = async (req, res) => {
     return res.status(500).send({ message: er.message, success: false });
   }
 };
-module.exports = { createProductController, getProductDataController };
+
+const updateProductController = async (req, res) => {
+  const {
+    title,
+    description,
+    rating,
+    discountedPrice,
+    originalPrice,
+    quantity,
+    category,
+  } = req.body;
+  console.log(req.files);
+  const { id } = req.params;
+  try {
+    const checkIfProductExists = await ProductModel.findOne({ _id: id });
+    if (!checkIfProductExists) {
+      return res.status(404).send({ message: "Product not found" });
+    }
+    const arrayImage =
+      req.files &&
+      req.files.map(async (singleFile, index) => {
+        return cloudinary.uploader
+          .upload(singleFile.path, {
+            folder: "uploads",
+          })
+          .then((result) => {
+            fs.unlinkSync(singleFile.path);
+            return result.url;
+          });
+      });
+    const ImageData = req.files && (await Promise.all(arrayImage));
+    const UpdateImages = req.files ? ImageData : req.body.images;
+    const findAndUpdate = await ProductModel.findByIdAndUpdate(
+      { _id: id },
+      {
+        title,
+        description,
+        rating,
+        discountedPrice,
+        originalPrice,
+        quantity,
+        category,
+        images: UpdateImages,
+      },
+      { new: true }
+    );
+    return res.status(201).send({
+      message: "Document updated successfully",
+      sucess: true,
+      UpdatedResult: findAndUpdate,
+    });
+  } catch (error) {
+    return res.status(500).send({ message: error.message, sucess: false });
+  }
+};
+
+const getSinglePRoductDocumentController = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await ProductModel.findOne({ _id: id });
+    console.log(data);
+    if (!data) {
+      return res.status(404).send({ Message: "Product Not Found" });
+    }
+
+    return res
+      .status(200)
+      .send({ message: "Product Successfully fetched", data, success: true });
+  } catch (er) {
+    return res.status(500).send({ message: er.message, success: false });
+  }
+};
+
+module.exports = {
+  createProductController,
+  getProductDataController,
+  updateProductController,
+  getSinglePRoductDocumentController,
+};

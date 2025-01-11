@@ -15,13 +15,12 @@ function HomePage() {
         await getProducts();
       }
       callProducts();
-    },[]);
-    console.log(products);
+    },[]);    
     
       
   return(
     <>
-    <div className='grid gap-4 grid-cols-3'>
+    <div className='grid gap-4 grid-cols-4'>
         {products.map( (element, index)=> ( 
           <Card product = {element} key={index}/>
         ))}

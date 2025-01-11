@@ -5,6 +5,7 @@ import PageLogin from './Pages/PageLogin';
 import PageSignUp from './Pages/PageSignUp';
 import HomePage from './Pages/HomePage';
 import ProductEntryPage from './Pages/ProductEntryPage';
+import UpdateForm from './Pages/PageUpdate';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path = '/login' element={<PageLogin />}></Route>
         <Route path = '/signup' element={<PageSignUp />}></Route>
         <Route path="/product-entry-page" element={<ProductEntryPage />} />
+        <Route path="/update-form/:id" element={<UpdateForm />} />
       </Routes>
     </>
   )
