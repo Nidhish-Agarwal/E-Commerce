@@ -134,3 +134,14 @@ In this milestone we are displaying all the products in front end in an organize
 - Have added getProducts funtion in HomePage.jsx to fetch all the products using our API endpoint
 - After sucessfully fetching the products we have stroed it in a variable
 - after stroing the data we have sent each product to the card component to display it in the frontend
+
+## Milestone - 13
+
+In this milestone we have added a update option to our site
+
+### Key Features:
+
+- Have created a update-product API endpoint in the backend
+- Have created a frontend form to update the product
+- Have learned how to connect the frontend to backend to update the product
+- Have used useNavigate hook to go back to the home page after successfully updating the product.
