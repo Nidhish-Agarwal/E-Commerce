@@ -16,13 +16,21 @@ function HomePage() {
       }
       callProducts();
     },[]);    
+
+
+    const handleDelete = async (id) => {
+      console.log('id', id);
+      const data = await axios.delete(`http://localhost:8080/product/${id}`);
+      await getProducts();
+
+    };
     
       
   return(
     <>
     <div className='grid gap-4 grid-cols-4'>
         {products.map( (element, index)=> ( 
-          <Card product = {element} key={index}/>
+          <Card product = {element} handleDelete={handleDelete} key={index}/>
         ))}
         
     </div>

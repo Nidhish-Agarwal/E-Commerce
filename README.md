@@ -145,3 +145,14 @@ In this milestone we have added a update option to our site
 - Have created a frontend form to update the product
 - Have learned how to connect the frontend to backend to update the product
 - Have used useNavigate hook to go back to the home page after successfully updating the product.
+
+## Milestone - 14
+
+In this milestone we have added delete product functionality
+
+### Key Features:
+
+- Have created a delete product API endpoint
+- Have added a button to the card in order to facitilate the delete function
+- Have used axios in frontend to tell backend to delete that particular product
+- After deletion fetching the rest of the products to update the home page

@@ -67,14 +67,14 @@ function ProductEntryPage() {
     formDataBody.append('rating', rating);
 
     Images.map((ele) => {
-      formDataBody.append('filepath', ele);
+      formDataBody.append('files', ele);
     });
 
-    console.log(formDataBody);
+    console.log(formDataBody.files, Images);
     // axios request post
     axios.post('http://localhost:8080/product/create-product', formData, {
       headers: {
-        'Content-Type': 'multi-part/form-data',
+        'Content-Type': 'multipart/form-data',
       },
     });
   };
