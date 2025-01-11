@@ -3,11 +3,13 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     path: "./src/config/.env",
   });
 }
-
+const cors = require("cors");
 const express = require("express");
 
 const app = express();
 app.use(express.json());
+app.use(cors({ path: ["http://localhost:5173"] }));
+
 app.use(express.urlencoded({ extended: true }));
 const userRouter = require("./routes/user.route.js");
 const productRouter = require("./routes/product.route.js");

@@ -18,7 +18,9 @@ const createProductController = async (req, res) => {
     quantity,
     category,
   } = req.body;
+  console.log(req.files);
   try {
+    console.log(process.env.cloud_name);
     const arrayImage = req.files.map(async (singleFile, index) => {
       return cloudinary.uploader
         .upload(singleFile.path, {
@@ -141,9 +143,31 @@ const getSinglePRoductDocumentController = async (req, res) => {
   }
 };
 
+const deleteSingleProductController = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await ProductModel.findOne({ _id: id });
+    if (!data) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    await ProductModel.findByIdAndDelete({ _id: id });
+
+    return res
+      .status(200)
+      .send({ message: "Product sucessfully deleted", sucdess: true });
+  } catch (er) {
+    return res
+      .status(500)
+      .json({ message: "Internal server error", success: false, error: er });
+  }
+};
+
 module.exports = {
   createProductController,
   getProductDataController,
   updateProductController,
   getSinglePRoductDocumentController,
+  deleteSingleProductController,
 };
