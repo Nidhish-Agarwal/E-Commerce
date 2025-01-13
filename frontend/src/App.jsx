@@ -6,13 +6,14 @@ import PageSignUp from './Pages/PageSignUp';
 import HomePage from './Pages/HomePage';
 import ProductEntryPage from './Pages/ProductEntryPage';
 import UpdateForm from './Pages/PageUpdate';
-
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <Navbar />
       <Routes>
         <Route path = '/' element = {<HomePage />}></Route>
         <Route path = '/login' element={<PageLogin />}></Route>
