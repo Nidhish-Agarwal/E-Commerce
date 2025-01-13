@@ -18,7 +18,7 @@ const createProductController = async (req, res) => {
     quantity,
     category,
   } = req.body;
-  console.log(req.files);
+  console.log("Files in backend", req.files);
   try {
     console.log(process.env.cloud_name);
     const arrayImage = req.files.map(async (singleFile, index) => {

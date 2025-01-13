@@ -40,10 +40,10 @@ function Card({product, handleDelete}) {
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xl font-bold text-gray-900">
-              ₹{product.originalPrice}
+              ₹{product.discountedPrice}
             </span>
             <span className="ml-2 text-sm text-gray-500 line-through">
-              {product.discountedPrice}
+              {product.originalPrice}
             </span>
           </div>
           <button className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors duration-200">

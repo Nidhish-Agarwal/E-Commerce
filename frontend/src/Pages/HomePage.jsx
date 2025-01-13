@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../components/ProductCard/Card'
 import axios from 'axios';
-import { Car } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 function HomePage() {
     const [products, setProducts] = useState([])
 
@@ -30,7 +31,13 @@ function HomePage() {
     <>
     <div className='grid gap-4 grid-cols-4'>
         {products.map( (element, index)=> ( 
-          <Card product = {element} handleDelete={handleDelete} key={index}/>
+          <Link to={`/product-details/${element._id}`} key={index}>
+            <Card
+            product = {element}
+              handleDelete={handleDelete}
+              key={index}
+            />
+          </Link>
         ))}
         
     </div>

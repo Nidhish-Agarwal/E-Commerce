@@ -16,18 +16,18 @@ function ProductEntryPage() {
 
   const handleImageUpload = (e) => {
     const ImagesArray = Array.from(e.target.files);
-    console.log(ImagesArray);
+    console.log("Files in frontend",ImagesArray);
     setImages(ImagesArray);
   };
   const handleChange = (e) => {
     setInputError('');
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     setFormData({
       ...formData,
       [name]: value,
     });
-    console.log(formData);
+    // console.log(formData);
   };
   // 1. take all enteries from the user and store it in use STATES
   //   e.target.value;
@@ -36,8 +36,8 @@ function ProductEntryPage() {
   // 1. convert the all the image paths and set the state
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(Images);
+    console.log("Submit Form", formData);
+    console.log("Submit Image",Images);
     const {
       title,
       description,
@@ -70,7 +70,8 @@ function ProductEntryPage() {
       formDataBody.append('files', ele);
     });
 
-    console.log(formDataBody.files, Images);
+    console.log("formdata", formDataBody)
+    console.log("formdata files",formDataBody.files, Images);
     // axios request post
     axios.post('http://localhost:8080/product/create-product', formData, {
       headers: {

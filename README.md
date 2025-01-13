@@ -166,3 +166,13 @@ In this milestone we have addd the navbar to our website
 - We have created a Navbar.jsx file in the navbar folder and exported it
 - The file has been imported in app.jsx file and added to the top of the routes so that the navbar would be seen on every page.
 - Have added the option to toggel navbar for smaller screens like mobile phones
+
+## Milestone - 16
+
+In this milestone we have added the single product page option.
+
+### Key Features:
+
+- Have created a jsx page to view each product in detail including all of its images.
+- When user clicks on a product it redirects them to this page.
+- Added a image carosoul to view all the images in a more organized way.
