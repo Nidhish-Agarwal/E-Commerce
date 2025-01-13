@@ -156,3 +156,13 @@ In this milestone we have added delete product functionality
 - Have added a button to the card in order to facitilate the delete function
 - Have used axios in frontend to tell backend to delete that particular product
 - After deletion fetching the rest of the products to update the home page
+
+## Milestone - 15
+
+In this milestone we have addd the navbar to our website
+
+### Key Features:
+
+- We have created a Navbar.jsx file in the navbar folder and exported it
+- The file has been imported in app.jsx file and added to the top of the routes so that the navbar would be seen on every page.
+- Have added the option to toggel navbar for smaller screens like mobile phones
