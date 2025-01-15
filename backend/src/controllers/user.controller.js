@@ -3,6 +3,8 @@ const UserModel = require("../models/user.model.js");
 const transporter = require("../utils/sendmails.js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const cloudinary = require("../utils/cloudinary.js");
+const fs = require("fs");
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
@@ -98,6 +100,18 @@ const signup = async (req, res) => {
     if (checkUserPresentInDB) {
       return res.status(403).send({ message: "User already present" });
     }
+
+    console.log(req.file, process.env.cloud_name);
+    const ImageAddress = await cloudinary.uploader
+      .upload(req.file.path, {
+        folder: "uploads",
+      })
+      .then((result) => {
+        fs.unlinkSync(req.file.path);
+        return result.url;
+      });
+    console.log("url", ImageAddress);
+
     bcrypt.hash(password, 10, async function (err, hash) {
       if (err) {
         return res
@@ -109,19 +123,26 @@ const signup = async (req, res) => {
         Name: Name,
         email: email,
         password: hash,
+        avatar: {
+          url: ImageAddress,
+          public_id: `${email}_public_id`,
+        },
       });
     });
 
     return res.status(201).send({ message: "User created sucessfully" });
   } catch (er) {
+    console.log(er);
     return res.status(500).send({ message: er.message });
   }
 };
 
 const login = async (req, res) => {
   try {
-    const { Name, email, password } = req.body;
+    const { email, password } = req.body;
+    console.log(email, password);
     const checkUserPresentInDB = await UserModel.findOne({ email: email });
+
     if (checkUserPresentInDB) {
       bcrypt.compare(
         password,
@@ -130,9 +151,18 @@ const login = async (req, res) => {
           if (err) {
             return res
               .status(403)
-              .send({ message: er.message, success: false });
+              .send({ message: err.message, success: false });
+          }
+          console.log(result);
+
+          // Handle wrong password
+          if (!result) {
+            return res
+              .status(401)
+              .send({ message: "Wrong Password", success: false });
           }
 
+          // Correct password logic
           let data = {
             id: checkUserPresentInDB._id,
             email,
@@ -143,18 +173,21 @@ const login = async (req, res) => {
 
           return res
             .status(200)
-            .cookie("token", token)
-            .send({ message: "User logged in sucessfully..", success: true });
+            .cookie("token", token, { httpOnly: true })
+            .send({
+              message: "User logged in successfully.",
+              success: true,
+              token,
+            });
         }
       );
+    } else {
+      return res
+        .status(403)
+        .send({ message: "User not found...", success: false });
     }
-
-    return res
-      .status(403)
-      .send({ message: "User not found...", success: false });
   } catch (er) {
     return res.status(403).send({ message: er.message, success: false });
   }
 };
-
 module.exports = { CreateUser, verifyUserController, signup, login };
