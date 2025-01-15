@@ -57,7 +57,11 @@ function Card({product, handleDelete}) {
         </div>
         <button
           className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors duration-200"
-          onClick={() => handleDelete(product._id)}
+          onClick={(event) =>{
+            event.preventDefault();
+            event.stopPropagation();
+             handleDelete(product._id)
+            }}
         >
           🗑️
         </button>

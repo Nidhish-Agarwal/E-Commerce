@@ -1,12 +1,15 @@
 // SignupPage.js
 import React, { useState } from 'react';
 import validationObject from '../../validation.js';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 
 function SignupPage() {
-    const [error, setError] = useState('');
-    const [data, setData] = useState({
+  const [error, setError] = useState('');
+  const navigateUser = useNavigate();
+  const [data, setData] = useState({
         name: '',
         email: '',
         password: '',
@@ -22,7 +25,7 @@ function SignupPage() {
         console.log(data);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const nameV = validationObject.validateName(data.name);
         const emailV = validationObject.validateEmail(data.email);
@@ -43,6 +46,24 @@ function SignupPage() {
 
         setError("");
         console.log(error);
+
+        const formDataBody = new FormData();
+        
+        formDataBody.append('Name' , data.name);
+        formDataBody.append('password', data.password);
+        formDataBody.append('email', data.email);
+        formDataBody.append('file', data.file);
+
+        try{
+          await axios.post('http://localhost:8080/user/signup', formDataBody,{
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+          navigateUser('/');
+        }catch(er){
+          console.log('Some error occured'+ er.message);
+        }
 
         // axios request
     }

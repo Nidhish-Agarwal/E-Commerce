@@ -65,6 +65,7 @@ function ProductEntryPage() {
     formDataBody.append('originalPrice', originalPrice);
     formDataBody.append('quantity', quantity);
     formDataBody.append('rating', rating);
+    formDataBody.append('token', localStorage.getItem('token'));
 
     Images.map((ele) => {
       formDataBody.append('files', ele);
@@ -73,7 +74,7 @@ function ProductEntryPage() {
     console.log("formdata", formDataBody)
     console.log("formdata files",formDataBody.files, Images);
     // axios request post
-    axios.post('http://localhost:8080/product/create-product', formData, {
+    axios.post('http://localhost:8080/product/create-product', formDataBody, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

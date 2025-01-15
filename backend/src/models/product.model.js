@@ -17,6 +17,7 @@ const SchemaObject = {
     },
   ],
   //   ["https://imagelink.com","https://imagelink.com","https://imagelink.com" ]
+  userEmail: { type: String },
 };
 const productSchema = new mongoose.Schema(SchemaObject, { versionKey: false });
 const ProductModel = mongoose.model("Product", productSchema);
