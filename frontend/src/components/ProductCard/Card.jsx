@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function Card({ product, handleDelete }) {
   const handleAddToCart = async () => {
     const token = localStorage.getItem("token");
+    console.log("token", token);
     try {
       const response = await axios.post(
         `http://localhost:8080/cart/add-to-cart?token=${token}`,

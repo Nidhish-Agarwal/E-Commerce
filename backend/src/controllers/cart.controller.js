@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 
 async function AddToCartController(req, res) {
   const { productId, quantity } = req.body;
+  //   console.log(req);
   const userId = req.UserId;
-  console.log(userId);
+  console.log("userId", userId);
   try {
     if (!mongoose.Types.ObjectId.isValid(productId)) {
       return res.status(400).send({ message: "Send Valid Product ID" });
@@ -42,4 +43,26 @@ async function AddToCartController(req, res) {
   }
 }
 
-module.exports = { AddToCartController };
+async function GetProductsForUser(req, res) {
+  const userId = req.UserId;
+  try {
+    console.log(userId);
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(401).send({ message: "Un-Authorized Plese signup" });
+    }
+    const checkUserPresrnt = await UserModel.findOne({ _id: userId });
+    if (!checkUserPresrnt) {
+      return res.status(401).send({ message: "Un-Authorized Plese signup" });
+    }
+    const data = await CartModel.find({ userId });
+    return res.status(200).send({
+      message: "Data is successfully fetched",
+      success: true,
+      cartData: data,
+    });
+  } catch (er) {
+    return res.status(500).send({ message: er.message, success: false });
+  }
+}
+
+module.exports = { AddToCartController, GetProductsForUser };

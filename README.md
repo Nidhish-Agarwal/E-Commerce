@@ -186,3 +186,13 @@ In this milestone we have added the functionality to add products to the cart
 - Created cart Schema
 - Created cart route
 - Created card controller
+
+## Milestone - 18
+
+In this milestone we have added the functionality to retrieve the cart products
+
+### Key Features:
+
+- Created function to get products from cart
+- created a route to get the products
+- added authoriztion to prevent others from seeing the cart details
