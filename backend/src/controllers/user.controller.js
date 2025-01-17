@@ -68,8 +68,9 @@ async function CreateUser(req, res) {
 }
 
 const generateToken = (data) => {
+  console.log("generate token data", data);
   const token = jwt.sign(
-    { _id: data._id, name: data.name, email: data.email },
+    { id: data.id, name: data.name, email: data.email },
     process.env.SECRET_KEY
   );
   return token;
