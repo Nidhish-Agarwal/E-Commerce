@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Upload } from 'lucide-react';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Upload } from "lucide-react";
+import axios from "axios";
 function ProductEntryPage() {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     rating: 0,
     discountedPrice: 0,
     originalPrice: 0,
     quantity: 0,
-    category: '',
+    category: "",
   });
-  const [errorInput, setInputError] = useState('');
+  const [errorInput, setInputError] = useState("");
   const [Images, setImages] = useState(null);
 
   const handleImageUpload = (e) => {
     const ImagesArray = Array.from(e.target.files);
-    console.log("Files in frontend",ImagesArray);
+    console.log("Files in frontend", ImagesArray);
     setImages(ImagesArray);
   };
   const handleChange = (e) => {
-    setInputError('');
+    setInputError("");
     const { name, value } = e.target;
     // console.log(name, value);
     setFormData({
@@ -37,7 +37,7 @@ function ProductEntryPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit Form", formData);
-    console.log("Submit Image",Images);
+    console.log("Submit Image", Images);
     const {
       title,
       description,
@@ -55,35 +55,50 @@ function ProductEntryPage() {
       quantity <= 0 ||
       category.length <= 0
     ) {
-      return setInputError('Enter The Information Inside Feilds Correctly...');
+      return setInputError("Enter The Information Inside Feilds Correctly...");
     }
     let formDataBody = new FormData();
-    formDataBody.append('title', title);
-    formDataBody.append('description', description);
-    formDataBody.append('category', category);
-    formDataBody.append('discountedPrice', discountedPrice);
-    formDataBody.append('originalPrice', originalPrice);
-    formDataBody.append('quantity', quantity);
-    formDataBody.append('rating', rating);
-    formDataBody.append('token', localStorage.getItem('token'));
+    formDataBody.append("title", title);
+    formDataBody.append("description", description);
+    formDataBody.append("category", category);
+    formDataBody.append("discountedPrice", discountedPrice);
+    formDataBody.append("originalPrice", originalPrice);
+    formDataBody.append("quantity", quantity);
+    formDataBody.append("rating", rating);
+    formDataBody.append("token", localStorage.getItem("token"));
 
     Images.map((ele) => {
-      formDataBody.append('files', ele);
+      formDataBody.append("files", ele);
     });
 
-    console.log("formdata", formDataBody)
-    console.log("formdata files",formDataBody.files, Images);
+    console.log("formdata", formDataBody);
+    console.log("formdata files", formDataBody.files, Images);
     // axios request post
-    axios.post('http://localhost:8080/product/create-product', formDataBody, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    const token = localStorage.getItem("token");
+
+    let requestData = axios
+      .post(
+        `http://localhost:8080/product/create-product>token=${token}`,
+        formDataBody,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((er) => {
+        console.log("error", er);
+        return er;
+      });
   };
   return (
     <div
       className="flex justify-center items-center border border-black"
-      style={{ height: '100vh' }}
+      style={{ height: "100vh" }}
     >
       <form onSubmit={handleSubmit}>
         <div>

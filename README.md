@@ -176,3 +176,13 @@ In this milestone we have added the single product page option.
 - Have created a jsx page to view each product in detail including all of its images.
 - When user clicks on a product it redirects them to this page.
 - Added a image carosoul to view all the images in a more organized way.
+
+## Milestone - 17
+
+In this milestone we have added the functionality to add products to the cart
+
+### Key Features:
+
+- Created cart Schema
+- Created cart route
+- Created card controller
