@@ -205,3 +205,13 @@ In this milestone we coded the frontend UI for cart products.
 
 - Have fetched the user cart data from the backend.
 - Have made the cart page and sucessfuly displayed each item in the cart.
+
+## Milestone - 20
+
+In this milestone we have added the profile page section
+
+## Key Featuers:
+
+- Have created the backend to fetch the user profile data from the server
+- Have created the frontend profile page UI
+- Have error proofed the Address section by showing 'No Address Found' if address is missing
