@@ -9,6 +9,7 @@ import UpdateForm from "./Pages/PageUpdate";
 import Navbar from "./components/Navbar/Navbar";
 import SinglePageProduct from "./Pages/SingleProductPage";
 import CardPage from "./Pages/CartPage.jsx";
+import ProfilePage from "./Pages/Profile";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/update-form/:id" element={<UpdateForm />} />
         <Route path="/product-details/:id" element={<SinglePageProduct />} />
         <Route path="/cart" element={<CardPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </>
   );
