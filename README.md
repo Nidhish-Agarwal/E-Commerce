@@ -196,3 +196,12 @@ In this milestone we have added the functionality to retrieve the cart products
 - Created function to get products from cart
 - created a route to get the products
 - added authoriztion to prevent others from seeing the cart details
+
+## Milestone - 19
+
+In this milestone we coded the frontend UI for cart products.
+
+### Key Features:
+
+- Have fetched the user cart data from the backend.
+- Have made the cart page and sucessfuly displayed each item in the cart.
