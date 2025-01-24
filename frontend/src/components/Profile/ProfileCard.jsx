@@ -19,19 +19,33 @@ const InfoSection = ({ icon, label, value }) => (
 );
 export function ProfileCard() {
   const [userData, setUserData] = useState({});
+  const getUserData = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return alert("Token missing login");
+    }
+    const response = await axios.get(
+      `http://localhost:8080/user/user-data?token=${token}`
+    );
+    setUserData(response.data.data);
+  };
   useEffect(() => {
-    const getUserData = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        return alert("Token missing login");
-      }
-      const response = await axios.get(
-        `http://localhost:8080/user/user-data?token=${token}`
-      );
-      setUserData(response.data.data);
-    };
     getUserData();
   }, []);
+  const handleDeleteAddy = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      if (!token) {
+        return alert("Token missing");
+      }
+      const response = await axios.delete(
+        `http://localhost:8080/user/delete-address/${id}?token=${token}`
+      );
+      getUserData();
+    } catch (er) {
+      console.log(er.response.message);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <Card className="max-w-2xl mx-auto">
@@ -128,9 +142,18 @@ export function ProfileCard() {
             value={
               userData?.address?.length > 0 ? (
                 <ul className="list-disc list-inside">
-                  {/* {userData.address.map((addr, index) => (
-                      <li key={index}>{addr}</li>
-                    ))} */}
+                  {userData.address.map((addr, index) => (
+                    <>
+                      <button onClick={() => handleDeleteAddy(addr._id)}>
+                        Delete 👇🏻
+                      </button>
+                      <li key={index}>City: {addr.city}</li>
+                      <li key={index}>Country: {addr.country}</li>
+                      <li key={index}>Address1: {addr.address1}</li>
+                      <li key={index}>Address2: {addr.address2}</li>
+                      <li key={index}>Zip Code: {addr.zip}</li>
+                    </>
+                  ))}
                 </ul>
               ) : (
                 <span className="text-gray-400 italic">

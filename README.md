@@ -224,3 +224,14 @@ In this milestone we have created the address page
 
 - Have created the frontend to add the address.
 - Have used state to sucessfully update the form upon user input.
+
+## Milestone - 22
+
+In this milestone we have added the backend functionality to the address page
+
+## Key Features:
+
+- Have created a new route to add the address
+- Written the function which adds the new address to the database
+- Have connected frontend address page to the backend logic using axios
+- Have added a delete address functionality

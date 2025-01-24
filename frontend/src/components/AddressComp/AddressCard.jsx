@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddressCard = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     city: "",
     country: "",
     address1: "",
     address2: "",
-    zipcode: "",
+    zip: "",
     addressType: "home",
   });
 
@@ -18,9 +21,19 @@ const AddressCard = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return alert("Token is missing , Please login");
+    }
+    await axios.post(
+      `http://localhost:8080/user/add-address?token=${token}`,
+      formData
+    );
+    navigate("/profile");
+
     // You can add form submission logic here
   };
 
@@ -100,9 +113,9 @@ const AddressCard = () => {
         </label>
         <input
           type="text"
-          id="zipcode"
-          name="zipcode"
-          value={formData.zipcode}
+          id="zip"
+          name="zip"
+          value={formData.zip}
           onChange={handleChange}
           className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200"
           placeholder="Enter your zipcode"
