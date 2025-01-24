@@ -215,3 +215,12 @@ In this milestone we have added the profile page section
 - Have created the backend to fetch the user profile data from the server
 - Have created the frontend profile page UI
 - Have error proofed the Address section by showing 'No Address Found' if address is missing
+
+## Milestone -21
+
+In this milestone we have created the address page
+
+## Key Features:
+
+- Have created the frontend to add the address.
+- Have used state to sucessfully update the form upon user input.
