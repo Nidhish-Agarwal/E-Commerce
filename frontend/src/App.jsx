@@ -11,6 +11,7 @@ import SinglePageProduct from "./Pages/SingleProductPage";
 import CardPage from "./Pages/CartPage.jsx";
 import ProfilePage from "./Pages/Profile";
 import AddressCard from "./components/AddressComp/AddressCard.jsx";
+import SelectAddres from "./Pages/SelectAddresspage.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/product-details/:id" element={<SinglePageProduct />} />
         <Route path="/cart" element={<CardPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/select-address" element={<SelectAddres />} />
         <Route path="/add-address" element={<AddressCard />}></Route>
       </Routes>
     </>

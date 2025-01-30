@@ -210,7 +210,7 @@ In this milestone we coded the frontend UI for cart products.
 
 In this milestone we have added the profile page section
 
-## Key Featuers:
+### Key Featuers:
 
 - Have created the backend to fetch the user profile data from the server
 - Have created the frontend profile page UI
@@ -220,7 +220,7 @@ In this milestone we have added the profile page section
 
 In this milestone we have created the address page
 
-## Key Features:
+### Key Features:
 
 - Have created the frontend to add the address.
 - Have used state to sucessfully update the form upon user input.
@@ -229,9 +229,19 @@ In this milestone we have created the address page
 
 In this milestone we have added the backend functionality to the address page
 
-## Key Features:
+### Key Features:
 
 - Have created a new route to add the address
 - Written the function which adds the new address to the database
 - Have connected frontend address page to the backend logic using axios
 - Have added a delete address functionality
+
+## Milestone - 23
+
+In this milestone we have the functionality to place order
+
+### Key Features:
+
+- Have created a Place order button in the cart page to go to checkout
+- Have created select address page to display the available addresses to deliver the product
+- Have written the mongoose schema to store the order details.
