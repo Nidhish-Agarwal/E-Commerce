@@ -12,6 +12,7 @@ import CardPage from "./Pages/CartPage.jsx";
 import ProfilePage from "./Pages/Profile";
 import AddressCard from "./components/AddressComp/AddressCard.jsx";
 import SelectAddres from "./Pages/SelectAddresspage.jsx";
+import OrderConfirmation from "./Pages/OrderConformationPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +31,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/select-address" element={<SelectAddres />} />
         <Route path="/add-address" element={<AddressCard />}></Route>
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Routes>
     </>
   );

@@ -245,3 +245,13 @@ In this milestone we have the functionality to place order
 - Have created a Place order button in the cart page to go to checkout
 - Have created select address page to display the available addresses to deliver the product
 - Have written the mongoose schema to store the order details.
+
+## Milestone - 24
+
+In this Milestone we have added the order confirmation page
+
+### Key Features:
+
+- Have created the frontend to display the order confimation page
+- Have shown the addres, total price and the products in the order confirmation page.
+- Have added that page to the route for easy navigation
