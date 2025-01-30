@@ -30,7 +30,7 @@ function CardPage() {
           <div key={index}>
             <CartCard
               title={singleCartObject.productId.title}
-              image={singleCartObject.productId.images[0]}
+              images={singleCartObject.productId.images[0]}
               //   Index={index}
               description={singleCartObject.productId.description}
               originalPrice={singleCartObject.productId.originalPrice}
