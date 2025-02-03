@@ -265,3 +265,13 @@ In this Milestone we have set up the backend for orders
 - Have set up a api to create the order
 - Have created the order model
 - Have added the route to confirm order
+
+## Milestone - 26
+
+In this milestone we have set up the backed to get order details
+
+### Key Features:
+
+- Have created a controller to get all the user order data
+- Have added that controller to the order routes
+- Have added the order routes under the api '/orders'
