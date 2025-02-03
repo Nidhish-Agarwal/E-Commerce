@@ -255,3 +255,13 @@ In this Milestone we have added the order confirmation page
 - Have created the frontend to display the order confimation page
 - Have shown the addres, total price and the products in the order confirmation page.
 - Have added that page to the route for easy navigation
+
+## Milestone - 25
+
+In this Milestone we have set up the backend for orders
+
+### Key Features:
+
+- Have set up a api to create the order
+- Have created the order model
+- Have added the route to confirm order
