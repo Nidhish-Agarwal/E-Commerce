@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 const userRouter = require("./routes/user.route.js");
 const productRouter = require("./routes/product.route.js");
 const cartRouter = require("./routes/cart.route.js");
+const orderRouter = require("./routes/orders.route.js");
 
 app.get("/", (req, res) => {
   res.send("Welcome to backend");
@@ -24,5 +25,6 @@ app.get("/", (req, res) => {
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
+app.use("/orders", orderRouter);
 
 module.exports = app;
