@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import PageLogin from "./Pages/PageLogin";
@@ -13,10 +12,9 @@ import ProfilePage from "./Pages/Profile";
 import AddressCard from "./components/AddressComp/AddressCard.jsx";
 import SelectAddres from "./Pages/SelectAddresspage.jsx";
 import OrderConfirmation from "./Pages/OrderConformationPage";
+import OrderHistory from "./Pages/Order-history";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Navbar />
@@ -32,6 +30,7 @@ function App() {
         <Route path="/select-address" element={<SelectAddres />} />
         <Route path="/add-address" element={<AddressCard />}></Route>
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/order-history" element={<OrderHistory />} />
       </Routes>
     </>
   );

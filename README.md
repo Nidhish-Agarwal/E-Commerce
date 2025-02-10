@@ -275,3 +275,13 @@ In this milestone we have set up the backed to get order details
 - Have created a controller to get all the user order data
 - Have added that controller to the order routes
 - Have added the order routes under the api '/orders'
+
+## Milestone - 27
+
+In this milestone we created frontend to display all orders.
+
+### Key Features:
+
+- Have created order history frontend page
+- Have added it's navigatin in the navbar
+- Have updated the other files to show the order-history.
