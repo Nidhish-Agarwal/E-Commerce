@@ -11,12 +11,26 @@ function OrderHistory() {
     const response = await axios.get(
       `http://localhost:8080/orders/user-orders-data?token=${token}`
     );
+    const reversedData = response.data.orders?.reverse();
     SetOrderedData(response.data.orders);
     console.log(response.data.orders);
   };
   useEffect(() => {
     fetchedOrderedProducts();
   }, []);
+
+  const handleCancel = async (id) => {
+    console.log(id);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return alert("Token is missing , Please login");
+    }
+    await axios.patch(
+      `http://localhost:8080/orders/cancel-order?token=${token}&orderId=${id}`
+    );
+    fetchedOrderedProducts();
+  };
+
   return (
     <div>
       ordered
@@ -30,9 +44,10 @@ function OrderHistory() {
               description={singleCartObject.orderItems.description}
               originalPrice={singleCartObject.orderItems.originalPrice}
               discountedPrice={singleCartObject.orderItems.discountedPrice}
-              id={singleCartObject.orderItems._id}
+              id={singleCartObject._id}
               orderStatus={singleCartObject.orderStatus}
-              createdBy={"nayan@k.com"}
+              createdBy={"nidhish@a.com"}
+              handleCancel={handleCancel}
             />
           </div>
         );

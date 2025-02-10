@@ -285,3 +285,13 @@ In this milestone we created frontend to display all orders.
 - Have created order history frontend page
 - Have added it's navigatin in the navbar
 - Have updated the other files to show the order-history.
+
+## Milestone - 28
+
+In this milestone we have added the concel option for placed orders
+
+### Key Features:
+
+- Have created the frontend to show the option to cancel the order
+- Have created the backend to handle the order cancellation
+- Have shown the cancel option only if the item is not canceled
