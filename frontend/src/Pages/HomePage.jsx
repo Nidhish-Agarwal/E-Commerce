@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function HomePage() {
+  const dataRedux = useSelector((state) => state.user);
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {

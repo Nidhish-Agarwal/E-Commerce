@@ -315,3 +315,12 @@ In this milestone we have added redux for global state management
 - Have created the a redux folder to store all the redux related code
 - Have created a provider function and added it in the main.jsx file so that the entire application can access the values.
 - We are using redux so that we won't have to do prop drilling
+
+## Milestone - 32
+
+In this mielstone we have used the redux which we had implemented in the previous milestone
+
+### Key Features:
+
+- Have stored the user mail in all the pages using useRedux
+- Have stored in the mail in variable called data

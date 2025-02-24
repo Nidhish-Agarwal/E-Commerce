@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AddressList from "../components/AllAddress/Addresses";
 export default function SelectAddres() {
   const [AllAddresses, setAllAddresses] = useState([]);
+  const data = useSelector((state) => state.user);
   useEffect(() => {
     //api call to get addresses
     const fetchAddress = async () => {
