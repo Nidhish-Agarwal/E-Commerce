@@ -295,3 +295,13 @@ In this milestone we have added the concel option for placed orders
 - Have created the frontend to show the option to cancel the order
 - Have created the backend to handle the order cancellation
 - Have shown the cancel option only if the item is not canceled
+
+## Milestone - 29
+
+In this milestone we have integrated razorpay
+
+### Key Features:
+
+- Have added routes, schemas and controllers for payment using razor pay
+- Have added a handlepay function in the frontend
+- Have added the payment button in the frontends
