@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Upload } from "lucide-react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 function ProductEntryPage() {
   const [formData, setFormData] = useState({
     title: "",

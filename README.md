@@ -324,3 +324,15 @@ In this mielstone we have used the redux which we had implemented in the previou
 
 - Have stored the user mail in all the pages using useRedux
 - Have stored in the mail in variable called data
+
+## Milestone - 35
+
+In this milestone we have deployed our frontend and backend servers
+
+### Key Features:
+
+- Backend server Link:
+  https://ecommerce-follow-along-a6eb.onrender.com
+
+- Frontend server Link:
+  https://ecommerce-follow-along-git-main-nidhish-agarwals-projects.vercel.app/

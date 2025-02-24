@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CartCard from "../component/ProductCard/CartCard";
+import { useSelector } from "react-redux";
 function OrderHistory() {
   const [OrderedData, SetOrderedData] = useState([]);
   const data = useSelector((state) => state.user);
