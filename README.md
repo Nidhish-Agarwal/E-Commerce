@@ -305,3 +305,13 @@ In this milestone we have integrated razorpay
 - Have added routes, schemas and controllers for payment using razor pay
 - Have added a handlepay function in the frontend
 - Have added the payment button in the frontends
+
+## Milestone - 31
+
+In this milestone we have added redux for global state management
+
+### Key Features:
+
+- Have created the a redux folder to store all the redux related code
+- Have created a provider function and added it in the main.jsx file so that the entire application can access the values.
+- We are using redux so that we won't have to do prop drilling
