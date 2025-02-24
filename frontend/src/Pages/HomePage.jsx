@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/ProductCard/Card";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function HomePage() {
   const dataRedux = useSelector((state) => state.user);

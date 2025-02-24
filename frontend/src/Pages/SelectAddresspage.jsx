@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AddressList from "../components/AllAddress/Addresses";
+import { useSelector } from "react-redux";
 export default function SelectAddres() {
   const [AllAddresses, setAllAddresses] = useState([]);
   const data = useSelector((state) => state.user);
